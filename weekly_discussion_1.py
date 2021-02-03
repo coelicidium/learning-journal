@@ -17,8 +17,17 @@
 
 >>> print(01)
 
-## 
+# SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers.
+# Well... this is self-explaining, isn't it? Typing print(0o01) give us 1, which is a perfectly fine number in the octal system.
+# Warning: the print statement returns automatically the output in decimal base, so (0o200) produces 128 as a result.
+# And 8 is definitely not a valid octal number. 
 
 >>> 1/(2/3) 
 
-# This is a valid expression in 
+# This is a valid expression in the most recent version of Python, but not in its former one, that returns us the following:
+# ZeroDivisionError: integer division or modulo by zero
+# This can only mean that Python 2.7.12 has the operator / as integer division only, and gives us the error 
+# because 2/3 would be 0.666666666 and this is NOT an integer; only the integer part gets in, leading to zero.
+# Suddenly we have a division by zero, which is known to be undefined. A modulo by zero is undefined as well.
+# Why? Because you get the modulo through a division. 
+# Type 2//3, where // is the floor division operator, rounding the result to the nearest integer if you want to verify by yourselves.
